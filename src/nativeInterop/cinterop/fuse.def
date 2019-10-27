@@ -1,0 +1,26 @@
+package = fuse
+headers = fuse.h
+compilerOpts = -D_POSIX_SOURCE -DFUSE_USE_VERSION=26 -D_FILE_OFFSET_BITS=64 -D_DARWIN_USE_64_BIT_INODE
+compilerOpts.osx =
+compilerOpts.linux = -D_REENTRANT
+compilerOpts.ios =
+linkerOpts =
+linkerOpts.osx = -L/usr/local/lib -losxfuse
+linkerOpts.linux = -lfuse
+linkerOpts.ios =
+
+---
+
+/*
+typedef struct ktfuse_sample_struct {
+    int a;
+    int b;
+    int c;
+} ktfuse_sample_struct;
+
+void ktfuse_sample_callback(int (*callback)(ktfuse_sample_struct*) ) {
+    ktfuse_sample_struct data = {1,2,3};
+    int result = callback(&data);
+    printf("%d, %d, %d --> %d\n", data.a, data.b, data.c, result);
+}
+*/
